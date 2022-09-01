@@ -30,8 +30,9 @@ Serv::Serv(Core *core) : Scene(core)
     me.name = core->_username;
 }
 
-void Serv::movement()
+void Serv::movement(Core *core)
 {
+    if (!core->sfml->window.hasFocus()) return;
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
     {
         me.sprite.move({me._speed * dt, 0.0});
@@ -121,23 +122,38 @@ void Serv::updatePlayer(Core *core)
     }
 }
 
+void Serv::updateMe(Core *core)
+{
+    if (mePreviously != me.sprite.getPosition())
+    {
+        string query = "UPDATE Player SET posX = " + to_string(me.sprite.getPosition().x) + ", posY = " + to_string(me.sprite.getPosition().y) + " WHERE name = '" + core->_username + "'";
+        core->sql->EXECUTE(query);
+        cout << "UPDATE ME POSITION !" << endl;
+    }
+    mePreviously = me.sprite.getPosition();
+}
+
 void Serv::use(Core *core)
 {
     dt = dtClock.restart().asSeconds();
-    while(core->sfml->window.pollEvent(core->sfml->event))
+    Event event;
+    while(core->sfml->window.pollEvent(event))
     {
-        if (core->sfml->event.type == sf::Event::Closed) core->switchScene(-1);
-    }
+        if (event.type == sf::Event::Closed) core->switchScene(-1);
 
-    movement();
+    }
+    movement(core);
+
 
     fillPlayer(core);
     updatePlayer(core);
 
+    updateMe(core);
+
     core->sfml->window.clear(sf::Color::White);
 
     core->sfml->window.draw(me.sprite);
-    core->sfml->printText(me.name, {me.sprite.getPosition().x - (me.sprite.getSize().x / 2), me.sprite.getPosition().y - 32}, 35, Color::Black);
+    core->sfml->printText(core->_username, {me.sprite.getPosition().x - (me.sprite.getSize().x / 2), me.sprite.getPosition().y - 32}, 35, Color::Black);
 
     for(int i = 0 ; i < other.size(); i++)
     {

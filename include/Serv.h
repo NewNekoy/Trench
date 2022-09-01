@@ -22,15 +22,17 @@ public:
     Serv(Core *core);
     ~Serv();
 
-    void movement();
+    void movement(Core *core);
     void use(Core *core);
     void fillPlayer(Core *core);
     void updatePlayer(Core *core);
+    void updateMe(Core *core);
 private:
     Player me;
     vector<Player> other;
     float dt;
     sf::Clock dtClock;
+    Vector2f mePreviously;
 };
 
 #endif // SERV_H
