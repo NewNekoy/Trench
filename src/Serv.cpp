@@ -23,7 +23,7 @@ Serv::Serv(Core *core) : Scene(core)
     for(int i = 0; i < OtherPlayers.size(); i++)
     {
         temp.name = OtherPlayers[i][1];
-        temp.sprite.setPosition(Vector2f(stoi(OtherPlayers[i][2]), stoi(OtherPlayers[i][3])));
+        temp.sprite.setPosition(Vector2f(stof(OtherPlayers[i][2]), stof(OtherPlayers[i][3])));
         other.push_back(temp);
     }
 
@@ -52,12 +52,27 @@ void Serv::movement()
 
 void Serv::fillPlayer(Core *core)
 {
-
 }
 
 void Serv::updatePlayer(Core *core)
 {
+    vector<vector<string>> OtherPlayers = core->sql->GETTER("SELECT * FROM Player WHERE name!='" + core->_username + "'");
 
+    for(int i = 0; i < OtherPlayers.size(); i++)
+    {
+        for (int j = 0; j < other.size(); j++)
+        {
+            if (other[j].name == OtherPlayers[i][1])
+            {
+                if (other[j].sprite.getPosition().x != stof(OtherPlayers[i][2]) ||
+                    other[j].sprite.getPosition().y != stof(OtherPlayers[i][3]))
+                    {
+                        other[j].sprite.setPosition(Vector2f(stof(OtherPlayers[i][2]), stof(OtherPlayers[i][3])));
+                        cout << "POSITION UPDATE FOR : " + other[j].name << endl;
+                    }
+            }
+        }
+    }
 }
 
 void Serv::use(Core *core)
@@ -69,7 +84,9 @@ void Serv::use(Core *core)
     }
 
     movement();
+
     fillPlayer(core);
+    updatePlayer(core);
 
     core->sfml->window.clear(sf::Color::White);
 
