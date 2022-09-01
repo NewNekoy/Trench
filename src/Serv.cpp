@@ -1,17 +1,5 @@
 #include "Serv.h"
 
-Player::Player()
-{
-    sprite.setSize(Vector2f(64, 64));
-    sprite.setFillColor(Color::Green);
-    _speed = 255;
-}
-
-Player::~Player()
-{
-
-}
-
 Serv::Serv(Core *core) : Scene(core)
 {
     vector<vector<string>> OtherPlayers = core->sql->GETTER("SELECT * FROM Player WHERE name!='" + core->_username + "'");
@@ -20,7 +8,7 @@ Serv::Serv(Core *core) : Scene(core)
     temp.sprite.setSize(Vector2f(64, 64));
     temp.sprite.setFillColor(Color::Red);
 
-    for(int i = 0; i < OtherPlayers.size(); i++)
+    for(size_t i = 0; i < OtherPlayers.size(); i++)
     {
         temp.name = OtherPlayers[i][1];
         temp.sprite.setPosition(Vector2f(stof(OtherPlayers[i][2]), stof(OtherPlayers[i][3])));
@@ -54,7 +42,7 @@ void Serv::movement(Core *core)
 void Serv::fillPlayer(Core *core)
 {
     string query = "SELECT * FROM Player WHERE name!='" + core->_username + "' ";
-    for (int i = 0; i < other.size(); i++)
+    for (size_t i = 0; i < other.size(); i++)
     {
         query = query + "AND name!='" + other[i].name + "' ";
     }
@@ -64,7 +52,7 @@ void Serv::fillPlayer(Core *core)
     temp.sprite.setSize(Vector2f(64, 64));
     temp.sprite.setFillColor(Color::Red);
 
-    for(int i = 0; i < morePlayers.size(); i++)
+    for(size_t i = 0; i < morePlayers.size(); i++)
     {
         temp.name = morePlayers[i][1];
         temp.sprite.setPosition(Vector2f(stof(morePlayers[i][2]), stof(morePlayers[i][3])));
@@ -77,9 +65,9 @@ void Serv::fillPlayer(Core *core)
 
     vector<Player> test = other;
 
-    for(int i = 0; i < playerList.size(); i++)
+    for(size_t i = 0; i < playerList.size(); i++)
     {
-        for (int j = 0; j < test.size(); j++)
+        for (size_t j = 0; j < test.size(); j++)
         {
             if (playerList[i][1] == test[j].name)
             {
@@ -88,9 +76,9 @@ void Serv::fillPlayer(Core *core)
         }
     }
 
-    for(int i = 0; i < test.size(); i++)
+    for(size_t i = 0; i < test.size(); i++)
     {
-        for(int j = 0; j < other.size(); j++)
+        for(size_t j = 0; j < other.size(); j++)
         {
             if (other[j].name == test[i].name)
             {
@@ -105,9 +93,9 @@ void Serv::updatePlayer(Core *core)
 {
     vector<vector<string>> OtherPlayers = core->sql->GETTER("SELECT * FROM Player WHERE name!='" + core->_username + "'");
 
-    for(int i = 0; i < OtherPlayers.size(); i++)
+    for(size_t i = 0; i < OtherPlayers.size(); i++)
     {
-        for (int j = 0; j < other.size(); j++)
+        for (size_t j = 0; j < other.size(); j++)
         {
             if (other[j].name == OtherPlayers[i][1])
             {
@@ -155,7 +143,7 @@ void Serv::use(Core *core)
     core->sfml->window.draw(me.sprite);
     //core->sfml->printText(core->_username, {me.sprite.getPosition().x - (me.sprite.getSize().x / 2), me.sprite.getPosition().y - 32}, 35, Color::Black);
 
-    for(int i = 0 ; i < other.size(); i++)
+    for(size_t i = 0 ; i < other.size(); i++)
     {
         core->sfml->window.draw(other[i].sprite);
     }

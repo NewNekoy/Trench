@@ -462,10 +462,10 @@
 
 1662045769 c:\users\soyneko\desktop\work\trench\include\scene.h
 
-1662052604 source:c:\users\soyneko\desktop\work\trench\src\serv.cpp
+1662052946 source:c:\users\soyneko\desktop\work\trench\src\serv.cpp
 	"Serv.h"
 
-1662052398 c:\users\soyneko\desktop\work\trench\include\serv.h
+1662053160 c:\users\soyneko\desktop\work\trench\include\serv.h
 	"Scene.h"
 	"Core.h"
 	<algorithm>
@@ -477,5 +477,12 @@
 	"Serv.h"
 
 1662045787 source:c:\users\soyneko\desktop\work\trench\src\core.cpp
+	"Core.h"
+
+1662052989 c:\users\soyneko\desktop\work\trench\include\player.h
+	"Core.h"
+
+1662052963 source:c:\users\soyneko\desktop\work\trench\src\player.cpp
+	"Player.h"
 	"Core.h"
 

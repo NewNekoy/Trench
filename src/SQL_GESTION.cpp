@@ -43,7 +43,7 @@ vector<vector<string>> SQL_Gestion::GETTER(string query)
 
     vector<vector<string>> sqlInfo;
 
-    while (row = mysql_fetch_row(result))
+    while ((row = mysql_fetch_row(result)))
     {
         vector<string> a_row;
         for(int i = 0; i < num_fields; i++)
