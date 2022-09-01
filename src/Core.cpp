@@ -31,7 +31,7 @@ void Core::premice()
     sql->EXECUTE("INSERT INTO Player(name) VALUES ('" + username + "')");
 
     sfml = new SFML_Gestion();
-    scene = new Serv();
+    scene = new Serv(this);
 
     run();
 }
@@ -39,7 +39,7 @@ void Core::premice()
 void Core::switchScene(int id)
 {
     if (id == -1) sfml->close();
-    if (id == 0) scene = new Serv();
+    if (id == 0) scene = new Serv(this);
 }
 
 void Core::run()

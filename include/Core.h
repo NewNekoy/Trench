@@ -18,10 +18,11 @@ public:
     SFML_Gestion *sfml;
     SQL_Gestion *sql;
 
+    string _username;
 private:
     Scene *scene;
     int _id;
-    string _username;
+
 };
 
 #endif // CORE_H

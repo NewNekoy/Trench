@@ -1,13 +1,13 @@
 #include "Scene.h"
 
-Scene::Scene()
+Scene::Scene(Core *core)
 {
     //ctor
 }
 
 void Scene::use(Core *core)
 {
-    
+
 }
 
 Scene::~Scene()

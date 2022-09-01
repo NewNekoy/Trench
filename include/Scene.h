@@ -6,7 +6,7 @@ class Core;
 class Scene
 {
     public:
-        Scene();
+        Scene(Core *core);
         virtual ~Scene();
         virtual void use(Core *core);
 };

@@ -22,5 +22,7 @@ int main()
 
     printDoubleVector(test);
 
+    core.premice();
+
     return 0;
 }
