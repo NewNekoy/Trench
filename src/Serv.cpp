@@ -153,13 +153,11 @@ void Serv::use(Core *core)
     core->sfml->window.clear(sf::Color::White);
 
     core->sfml->window.draw(me.sprite);
-    core->sfml->printText(core->_username, {me.sprite.getPosition().x - (me.sprite.getSize().x / 2), me.sprite.getPosition().y - 32}, 35, Color::Black);
+    //core->sfml->printText(core->_username, {me.sprite.getPosition().x - (me.sprite.getSize().x / 2), me.sprite.getPosition().y - 32}, 35, Color::Black);
 
     for(int i = 0 ; i < other.size(); i++)
     {
         core->sfml->window.draw(other[i].sprite);
-        core->sfml->printText(other[i].name, {other[i].sprite.getPosition().x - (other[i].sprite.getSize().x / 2), other[i].sprite.getPosition().y - 32}, 35, Color::Black);
-
     }
 
     core->sfml->window.display();
