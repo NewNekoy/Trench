@@ -19,6 +19,8 @@ public:
     SQL_Gestion *sql;
 
     string _username;
+    Clock dtClock;
+    float dt;
 private:
     Scene *scene;
     int _id;

@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1662045428 source:c:\users\soyneko\desktop\work\trench\main.cpp
+1662053468 source:c:\users\soyneko\desktop\work\trench\main.cpp
 	"Core.h"
 
 1661969883 c:\users\soyneko\desktop\work\trench\sql\mysql\mysql.h
@@ -448,7 +448,7 @@
 	<SFML/Graphics/Drawable.hpp>
 	<SFML/Window/GlResource.hpp>
 
-1662044616 source:c:\users\soyneko\desktop\work\trench\src\sql_gestion.cpp
+1662053399 source:c:\users\soyneko\desktop\work\trench\src\sql_gestion.cpp
 	"SQL_Gestion.h"
 
 1662044353 c:\users\soyneko\desktop\work\trench\include\sfml_gestion.h
@@ -462,15 +462,16 @@
 
 1662045769 c:\users\soyneko\desktop\work\trench\include\scene.h
 
-1662052946 source:c:\users\soyneko\desktop\work\trench\src\serv.cpp
+1662062424 source:c:\users\soyneko\desktop\work\trench\src\serv.cpp
 	"Serv.h"
+	"Shoot.h"
 
-1662053160 c:\users\soyneko\desktop\work\trench\include\serv.h
+1662061796 c:\users\soyneko\desktop\work\trench\include\serv.h
 	"Scene.h"
 	"Core.h"
 	<algorithm>
 
-1662046899 c:\users\soyneko\desktop\work\trench\include\core.h
+1662054774 c:\users\soyneko\desktop\work\trench\include\core.h
 	"SQL_Gestion.h"
 	"SFML_Gestion.h"
 	"Scene.h"
@@ -482,7 +483,14 @@
 1662052989 c:\users\soyneko\desktop\work\trench\include\player.h
 	"Core.h"
 
-1662052963 source:c:\users\soyneko\desktop\work\trench\src\player.cpp
-	"Player.h"
+1662061257 source:c:\users\soyneko\desktop\work\trench\src\player.cpp
+	"Core.h"
+	"Shoot.h"
+
+1662061488 source:c:\users\soyneko\desktop\work\trench\src\shoot.cpp
+	"Shoot.h"
+	<cmath>
+
+1662056255 c:\users\soyneko\desktop\work\trench\include\shoot.h
 	"Core.h"
 

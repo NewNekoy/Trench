@@ -1,4 +1,5 @@
 #include "Serv.h"
+#include "Shoot.h"
 
 Serv::Serv(Core *core) : Scene(core)
 {
@@ -15,28 +16,10 @@ Serv::Serv(Core *core) : Scene(core)
         other.push_back(temp);
     }
 
-    me.name = core->_username;
-}
+    view = core->sfml->window.getView();
+    view.zoom(2.f);
 
-void Serv::movement(Core *core)
-{
-    if (!core->sfml->window.hasFocus()) return;
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-    {
-        me.sprite.move({me._speed * dt, 0.0});
-    }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
-    {
-        me.sprite.move(-me._speed * dt, 0.0f);
-    }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
-    {
-        me.sprite.move(0.0f, -me._speed * dt);
-    }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-    {
-        me.sprite.move(0.0f, me._speed * dt);
-    }
+    me.name = core->_username;
 }
 
 void Serv::fillPlayer(Core *core)
@@ -123,20 +106,29 @@ void Serv::updateMe(Core *core)
 
 void Serv::use(Core *core)
 {
-    dt = dtClock.restart().asSeconds();
+    core->dt = core->dtClock.restart().asSeconds();
     Event event;
     while(core->sfml->window.pollEvent(event))
     {
         if (event.type == sf::Event::Closed) core->switchScene(-1);
 
     }
-    movement(core);
+    me.movement(core);
 
 
     fillPlayer(core);
     updatePlayer(core);
 
     updateMe(core);
+
+    me._shoot->use(core);
+
+
+
+    view.setCenter(me.sprite.getPosition().x + me.sprite.getSize().x / 2,
+                        me.sprite.getPosition().y + me.sprite.getSize().y / 2);
+    core->sfml->window.setView(view);
+
 
     core->sfml->window.clear(sf::Color::White);
 
@@ -146,6 +138,11 @@ void Serv::use(Core *core)
     for(size_t i = 0 ; i < other.size(); i++)
     {
         core->sfml->window.draw(other[i].sprite);
+    }
+
+    for(size_t i = 0; i < me._shoot->_projectiles.size(); i++)
+    {
+        core->sfml->window.draw(me._shoot->_projectiles[i].shape);
     }
 
     core->sfml->window.display();

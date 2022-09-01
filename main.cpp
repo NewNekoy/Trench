@@ -18,10 +18,6 @@ int main()
 
     Core core;
 
-    vector<vector<string>> test = core.sql->GETTER("SELECT * FROM Account WHERE username!='SoyNeko'");
-
-    printDoubleVector(test);
-
     core.premice();
 
     return 0;
