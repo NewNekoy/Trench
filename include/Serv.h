@@ -3,6 +3,7 @@
 
 #include "Scene.h"
 #include "Core.h"
+#include <algorithm>
 
 class Player
 {

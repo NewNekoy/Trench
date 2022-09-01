@@ -70,6 +70,34 @@ void Serv::fillPlayer(Core *core)
         other.push_back(temp);
         cout << temp.name + " JUST CONNECT !" << endl;
     }
+
+    query = "SELECT * FROM Player";
+    vector<vector<string>> playerList = core->sql->GETTER(query);
+
+    vector<Player> test = other;
+
+    for(int i = 0; i < playerList.size(); i++)
+    {
+        for (int j = 0; j < test.size(); j++)
+        {
+            if (playerList[i][1] == test[j].name)
+            {
+                test.erase(test.begin() + j);
+            }
+        }
+    }
+
+    for(int i = 0; i < test.size(); i++)
+    {
+        for(int j = 0; j < other.size(); j++)
+        {
+            if (other[j].name == test[i].name)
+            {
+                other.erase(other.begin() + j);
+                cout << test[i].name + " DISCONNECTED !" << endl;
+            }
+        }
+    }
 }
 
 void Serv::updatePlayer(Core *core)

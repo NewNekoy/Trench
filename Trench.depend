@@ -465,9 +465,10 @@
 1662049449 source:c:\users\soyneko\desktop\work\trench\src\serv.cpp
 	"Serv.h"
 
-1662045752 c:\users\soyneko\desktop\work\trench\include\serv.h
+1662050544 c:\users\soyneko\desktop\work\trench\include\serv.h
 	"Scene.h"
 	"Core.h"
+	<algorithm>
 
 1662046899 c:\users\soyneko\desktop\work\trench\include\core.h
 	"SQL_Gestion.h"
