@@ -4,6 +4,7 @@
 #include <iostream>
 #include <windows.h>
 #include <mysql.h>
+#include <vector>
 
 using namespace std;
 
@@ -13,7 +14,7 @@ public:
     SQL_Gestion();
     ~SQL_Gestion(){};
 
-    void GETTER(string query);
+    vector<vector<string>> GETTER(string query);
     void EXECUTE(string query);
     bool checkConnection(string username, string password);
 

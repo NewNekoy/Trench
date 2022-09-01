@@ -23,7 +23,7 @@ SQL_Gestion::SQL_Gestion()
     }
 }
 
-void SQL_Gestion::GETTER(string query)
+vector<vector<string>> SQL_Gestion::GETTER(string query)
 {
     if (mysql_query(con, query.c_str()))
     {
@@ -41,18 +41,21 @@ void SQL_Gestion::GETTER(string query)
 
     MYSQL_ROW row;
 
+    vector<vector<string>> sqlInfo;
+
     while (row = mysql_fetch_row(result))
     {
+        vector<string> a_row;
         for(int i = 0; i < num_fields; i++)
         {
-            cout << row[i] ? row[i] : "NULL";
-            cout << " ";
+            a_row.push_back(row[i] ? row[i] : "NULL");
         }
-
-        cout << endl;
+        sqlInfo.push_back(a_row);
     }
 
     mysql_free_result(result);
+
+    return sqlInfo;
 }
 
 bool SQL_Gestion::checkConnection(string username, string password)

@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1662033558 source:c:\users\soyneko\desktop\work\trench\main.cpp
+1662044269 source:c:\users\soyneko\desktop\work\trench\main.cpp
 	"Core.h"
 
 1661969883 c:\users\soyneko\desktop\work\trench\sql\mysql\mysql.h
@@ -33,10 +33,11 @@
 1662026329 source:c:\users\soyneko\desktop\work\trench\src\SQL_Gestion.cpp
 	"SQL_Gestion.h"
 
-1662033781 c:\users\soyneko\desktop\work\trench\include\sql_gestion.h
+1662044478 c:\users\soyneko\desktop\work\trench\include\sql_gestion.h
 	<iostream>
 	<windows.h>
 	<mysql.h>
+	<vector>
 
 1662026444 c:\users\soyneko\desktop\work\trench\sfml\include\sfml\graphics.hpp
 	<SFML/Window.hpp>
@@ -447,13 +448,13 @@
 	<SFML/Graphics/Drawable.hpp>
 	<SFML/Window/GlResource.hpp>
 
-1662033777 source:c:\users\soyneko\desktop\work\trench\src\sql_gestion.cpp
+1662044616 source:c:\users\soyneko\desktop\work\trench\src\sql_gestion.cpp
 	"SQL_Gestion.h"
 
-1662027882 c:\users\soyneko\desktop\work\trench\include\sfml_gestion.h
+1662044353 c:\users\soyneko\desktop\work\trench\include\sfml_gestion.h
 	<SFML/Graphics.hpp>
 
-1662027837 source:c:\users\soyneko\desktop\work\trench\src\sfml_gestion.cpp
+1662034121 source:c:\users\soyneko\desktop\work\trench\src\sfml_gestion.cpp
 	"SFML_Gestion.h"
 
 1662028623 source:c:\users\soyneko\desktop\work\trench\src\scene.cpp
@@ -461,10 +462,10 @@
 
 1662029160 c:\users\soyneko\desktop\work\trench\include\scene.h
 
-1662029239 source:c:\users\soyneko\desktop\work\trench\src\serv.cpp
+1662043903 source:c:\users\soyneko\desktop\work\trench\src\serv.cpp
 	"Serv.h"
 
-1662028725 c:\users\soyneko\desktop\work\trench\include\serv.h
+1662043868 c:\users\soyneko\desktop\work\trench\include\serv.h
 	"Scene.h"
 	"Core.h"
 
