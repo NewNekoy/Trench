@@ -52,6 +52,24 @@ void Serv::movement()
 
 void Serv::fillPlayer(Core *core)
 {
+    string query = "SELECT * FROM Player WHERE name!='" + core->_username + "' ";
+    for (int i = 0; i < other.size(); i++)
+    {
+        query = query + "AND name!='" + other[i].name + "' ";
+    }
+    vector<vector<string>> morePlayers = core->sql->GETTER(query);
+
+    Player temp;
+    temp.sprite.setSize(Vector2f(64, 64));
+    temp.sprite.setFillColor(Color::Red);
+
+    for(int i = 0; i < morePlayers.size(); i++)
+    {
+        temp.name = morePlayers[i][1];
+        temp.sprite.setPosition(Vector2f(stof(morePlayers[i][2]), stof(morePlayers[i][3])));
+        other.push_back(temp);
+        cout << temp.name + " JUST CONNECT !" << endl;
+    }
 }
 
 void Serv::updatePlayer(Core *core)
